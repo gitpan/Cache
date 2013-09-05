@@ -16,7 +16,7 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION = '2.04';
+our $VERSION = '2.05';
 
 
 sub new {
@@ -39,6 +39,8 @@ sub remove_size;
 
 1;
 __END__
+
+=back
 
 =head1 SEE ALSO
 

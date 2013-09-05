@@ -54,7 +54,7 @@ use fields qw(
         default_expires removal_strategy size_limit
         load_callback validate_callback);
 
-our $VERSION = '2.04';
+our $VERSION = '2.05';
 
 our $EXPIRES_NOW = 'now';
 our $EXPIRES_NEVER = 'never';
@@ -479,11 +479,19 @@ These methods are only for use internally (by concrete Cache implementations).
 Converts a timespec as described for Cache::Entry::set_expiry() into a unix
 time.
 
+=back
+
 =cut
 
 sub Canonicalize_Expiration_Time {
-    my $timespec = lc($_[0])
-        or return undef;
+    my $timespec;
+
+    my $timespec_param = shift(@_);
+    if (! $timespec_param)
+    {
+        return undef;
+    }
+    $timespec = lc($timespec_param);
 
     my $time;
 

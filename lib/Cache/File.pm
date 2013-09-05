@@ -41,7 +41,7 @@ use fields qw(
     expheap ageheap useheap index lockfile
     lock lockcount openexp openage openuse openidx);
 
-our $VERSION = '2.04';
+our $VERSION = '2.05';
 
 sub LOCK_NONE ()  { 0 }
 sub LOCK_LOCAL () { 1 }
@@ -309,8 +309,6 @@ sub _set_cache_umask {
 
 Specify the level of locking to be used.  There are three different levels
 available:
-
-=over
 
 =item Cache::File::LOCK_NONE()
 
