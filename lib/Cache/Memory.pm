@@ -34,7 +34,7 @@ use Cache::Memory::Entry;
 use base qw(Cache);
 use fields qw(namespace);
 
-our $VERSION = '2.05';
+our $VERSION = '2.06';
 
 
 # storage for all data
@@ -92,7 +92,7 @@ sub new {
     # init heaps
     $Age_Heaps{$ns} ||= Heap::Fibonacci->new();
     $Use_Heaps{$ns} ||= Heap::Fibonacci->new();
-    
+
     return $self;
 }
 
@@ -210,6 +210,10 @@ sub namespace {
 sub set_namespace {
     my Cache::Memory $self = shift;
     my ($namespace) = @_;
+
+    $Age_Heaps{$namespace} ||= Heap::Fibonacci->new();
+    $Use_Heaps{$namespace} ||= Heap::Fibonacci->new();
+
     $self->{namespace} = $namespace;
 }
 

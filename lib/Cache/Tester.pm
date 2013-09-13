@@ -32,7 +32,7 @@ use vars qw(@ISA @EXPORT $VERSION $CACHE_TESTS);
 use Carp;
 
 @ISA = qw(Exporter Test::More);
-$VERSION = '2.05';
+$VERSION = '2.06';
 @EXPORT = (qw(run_cache_tests $CACHE_TESTS), @Test::More::EXPORT);
 
 $CACHE_TESTS = 79;
@@ -172,7 +172,7 @@ sub test_cache_count {
         $cache->set("key$_", "test");
     }
     _is($cache->count(), 100, 'cache count correct after multiple sets');
-    
+
     shuffle(\@keys);
     foreach(@keys) {
         $cache->remove("key$_");
@@ -198,9 +198,12 @@ sub test_expiry {
     _ok(!$entry->exists(), 'entry set with instant expiry not added');
     _is($cache->size(), $size, 'size is unchanged');
 
-    $entry->set('test data', '1 sec');
-    _ok($entry->exists(), 'entry with 1 sec timeout added');
-    sleep(2);
+    # This is to fix/workaround the test failures by high load. See:
+    # https://rt.cpan.org/Public/Bug/Display.html?id=27280
+    my $delay = $ENV{PERL_CACHE_PM_TESTING} ? 1 : 3;
+    $entry->set('test data', "$delay sec");
+    _ok($entry->exists(), "entry with $delay sec timeout added");
+    sleep($delay+1);
     _ok(!$entry->exists(), 'entry expired');
     _is($cache->size(), $size, 'size is unchanged');
 

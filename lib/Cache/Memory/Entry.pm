@@ -25,7 +25,7 @@ use Carp;
 use base qw(Cache::Entry);
 use fields qw(store_entry);
 
-our $VERSION = '2.05';
+our $VERSION = '2.06';
 
 
 sub new {
@@ -45,7 +45,7 @@ sub new {
 
 sub DESTROY {
     my Cache::Memory::Entry $self = shift;
-    
+
     # drop the reference count and signal the cache if required
     unless (--$self->{store_entry}->{rc}) {
         $self->{cache}->entry_dropped_final_rc($self->{key});

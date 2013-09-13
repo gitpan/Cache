@@ -30,7 +30,7 @@ use Carp;
 use base qw(Cache::Entry);
 use fields qw(dir path lockdetails);
 
-our $VERSION = '2.05';
+our $VERSION = '2.06';
 
 # hash of locks held my the process, keyed on path.  This is useful for
 # catching potential deadlocks and warning the user, and for implementing
@@ -131,7 +131,7 @@ sub _get {
     my $time = time();
 
     $cache->lock();
-    
+
     if ($exists = $self->exists()) {
         # update last used
         $cache->update_last_use($key, $time);
@@ -417,7 +417,7 @@ sub _lock {
 
     my $path = $self->{path};
     my $lock_details = $PROCESS_LOCKS{$path};
-    
+
     if ($lock_details) {
         if ($$lock_details{type} != $type) {
             $tryonly and return 0;
@@ -441,7 +441,7 @@ sub _lock {
                 lock_type           => $type | ($tryonly? LOCK_NB : 0),
                 stale_lock_timeout  => $Cache::File::STALE_LOCK_TIMEOUT,
             });
-    
+
         unless ($lock) {
             umask $oldmask;
             $tryonly and return 0;
