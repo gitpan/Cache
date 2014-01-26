@@ -4,7 +4,7 @@
       "Chris Leishman <chris@leishman.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4007, CPAN::Meta::Converter version 2.132510",
+   "generated_by" : "Module::Build version 0.4007, CPAN::Meta::Converter version 2.132830",
    "keywords" : [
       "cache",
       "caching",
@@ -47,59 +47,60 @@
             "IO::String" : "1.02",
             "Storable" : "1.00",
             "Symbol" : "1.02",
-            "Test::More" : "0.45"
+            "Test::More" : "0.45",
+            "perl" : "5.006"
          }
       }
    },
    "provides" : {
       "Cache" : {
          "file" : "lib/Cache.pm",
-         "version" : "2.06"
+         "version" : "2.07"
       },
       "Cache::Entry" : {
          "file" : "lib/Cache/Entry.pm",
-         "version" : "2.06"
+         "version" : "2.07"
       },
       "Cache::File" : {
          "file" : "lib/Cache/File.pm",
-         "version" : "2.06"
+         "version" : "2.07"
       },
       "Cache::File::Entry" : {
          "file" : "lib/Cache/File/Entry.pm",
-         "version" : "2.06"
+         "version" : "2.07"
       },
       "Cache::File::Handle" : {
          "file" : "lib/Cache/File/Handle.pm"
       },
       "Cache::File::Heap" : {
          "file" : "lib/Cache/File/Heap.pm",
-         "version" : "2.06"
+         "version" : "2.07"
       },
       "Cache::IOString" : {
          "file" : "lib/Cache/IOString.pm"
       },
       "Cache::Memory" : {
          "file" : "lib/Cache/Memory.pm",
-         "version" : "2.06"
+         "version" : "2.07"
       },
       "Cache::Memory::Entry" : {
          "file" : "lib/Cache/Memory/Entry.pm",
-         "version" : "2.06"
+         "version" : "2.07"
       },
       "Cache::Memory::HeapElem" : {
          "file" : "lib/Cache/Memory/HeapElem.pm"
       },
       "Cache::Null" : {
          "file" : "lib/Cache/Null.pm",
-         "version" : "2.06"
+         "version" : "2.07"
       },
       "Cache::Null::Entry" : {
          "file" : "lib/Cache/Null/Entry.pm",
-         "version" : "2.06"
+         "version" : "2.07"
       },
       "Cache::RemovalStrategy" : {
          "file" : "lib/Cache/RemovalStrategy.pm",
-         "version" : "2.06"
+         "version" : "2.07"
       },
       "Cache::RemovalStrategy::FIFO" : {
          "file" : "lib/Cache/RemovalStrategy/FIFO.pm"
@@ -109,7 +110,7 @@
       },
       "Cache::Tester" : {
          "file" : "lib/Cache/Tester.pm",
-         "version" : "2.06"
+         "version" : "2.07"
       }
    },
    "release_status" : "stable",
@@ -121,5 +122,5 @@
          "url" : "http://bitbucket.org/shlomif/web-cpan"
       }
    },
-   "version" : "2.06"
+   "version" : "2.07"
 }
