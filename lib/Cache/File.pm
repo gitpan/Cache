@@ -25,7 +25,7 @@ use strict;
 use warnings;
 use Cache::File::Heap;
 use Cache::File::Entry;
-use Digest::SHA1 qw(sha1_hex);
+use Digest::SHA qw(sha1_hex);
 use Fcntl qw(LOCK_EX LOCK_NB);
 use Symbol ();
 use File::Spec;
@@ -41,7 +41,7 @@ use fields qw(
     expheap ageheap useheap index lockfile
     lock lockcount openexp openage openuse openidx);
 
-our $VERSION = '2.08';
+our $VERSION = '2.09';
 
 sub LOCK_NONE ()  { 0 }
 sub LOCK_LOCAL () { 1 }
