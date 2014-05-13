@@ -10,7 +10,7 @@ store data locally to save repeated and redundant expensive calls to remote
 machines or databases.
 
 The Cache interface is implemented by derived classes that store cached data
-in different manners (such as as files on a filesystem, or in memory).
+in different manners (such as files on a filesystem, or in memory).
 
 =head1 USAGE
 
@@ -49,12 +49,16 @@ use warnings;
 use Carp;
 use Date::Parse;
 
+# For registering the 'Cache' category. See:
+# https://rt.cpan.org/Public/Bug/Display.html?id=95608
+use warnings::register;
+
 use base qw(Tie::Hash);
 use fields qw(
         default_expires removal_strategy size_limit
         load_callback validate_callback);
 
-our $VERSION = '2.09';
+our $VERSION = '2.10';
 
 our $EXPIRES_NOW = 'now';
 our $EXPIRES_NEVER = 'never';
@@ -614,7 +618,7 @@ the storage medium.
 
 =item Cache::File no longer supports separate masks for entries and
 directories.  It is not a very secure configuration and presents numerous
-issues for cache consistency and is hence depricated.  There is still some
+issues for cache consistency and is hence deprecated.  There is still some
 work to be done to ensure cache consistency between accesses by different
 users.
 
